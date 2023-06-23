@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "f38fb146-12c0-41bb-8c4c-567c5f66d4a6",
+		"name": "IT Bootcamp Zavrsni projekat Milos Antic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26716215"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"JovanCekic123455\",\r\n  \"password\": \"Dragon123#W\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}Account/v1/User",
+					"host": [
+						"{{BaseURL}}Account"
+					],
+					"path": [
+						"v1",
+						"User"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenerateToken",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{passwprd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "JovanCekic123455",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"JovanCekic123455\",\r\n  \"password\": \"Dragon123#W\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}Account/v1/GenerateToken",
+					"host": [
+						"{{BaseURL}}Account"
+					],
+					"path": [
+						"v1",
+						"GenerateToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUser",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{passwprd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "JovanCekic123455",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}Account/v1/User/{{UserID}}",
+					"host": [
+						"{{BaseURL}}Account"
+					],
+					"path": [
+						"v1",
+						"User",
+						"{{UserID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBooks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}BookStore/v1/Books",
+					"host": [
+						"{{BaseURL}}BookStore"
+					],
+					"path": [
+						"v1",
+						"Books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://demoqa.com/Account/v1/Authorized",
+					"protocol": "https",
+					"host": [
+						"demoqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"Authorized"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostBooks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.{{TokenJovan}}.qwFasVrXLPF1wm1zcZUoum4pUsJkC4vvgRJmajlnodI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"{{UserID}}\",\r\n  \"collectionOfIsbns\": [\r\n    {\r\n      \"isbn\": \"console.log(Math.round(Math.random() * (5565756 - 234545) + 234545));\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}BookStore/v1/Books",
+					"host": [
+						"{{BaseURL}}BookStore"
+					],
+					"path": [
+						"v1",
+						"Books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteBooks",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "JovanCekic123455",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{passwprd}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}BookStore/v1/Books?UserId=b4bce75d-7021-4076-a45e-db26d4d27c21",
+					"host": [
+						"{{BaseURL}}BookStore"
+					],
+					"path": [
+						"v1",
+						"Books"
+					],
+					"query": [
+						{
+							"key": "UserId",
+							"value": "b4bce75d-7021-4076-a45e-db26d4d27c21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutBook",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "JovanCekic123455",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{passwprd}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\":  \"{{UserID}}\",\r\n  \"isbn\": \"9781593275846\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}BookStore/v1/Books/9781593277574",
+					"host": [
+						"{{BaseURL}}BookStore"
+					],
+					"path": [
+						"v1",
+						"Books",
+						"9781593277574"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "XXXimeVarijableXXX",
+			"value": ""
+		}
+	]
+}
